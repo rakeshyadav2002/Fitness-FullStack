@@ -29,6 +29,8 @@ builder.Services.AddScoped<IBMIService, BMIService>();
 
 builder.Services.AddScoped<ICalorieService, CalorieService>();
 
+builder.Services.AddScoped<IDietPlanService, DietPlanService>();
+
 builder.Services.AddScoped<JwtHelper>();
 
 builder.Services.AddDbContext<FitnessDBContext>(options =>

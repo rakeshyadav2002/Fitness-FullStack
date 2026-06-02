@@ -1,1 +1,115 @@
-<p>calories works!</p>
+<div class="container mt-4">
+
+  <div class="card shadow p-4">
+
+    <h3>Add Calories</h3>
+
+    <form
+      #calorieForm="ngForm"
+      autocomplete="off"
+      novalidate
+      (ngSubmit)="addCalorie(calorieForm)">
+
+      <input
+        type="text"
+        name="foodName"
+        class="form-control mb-2"
+        placeholder="Food Name"
+        required
+        [(ngModel)]="calorie.foodName">
+
+      <input
+        type="text"
+        name="mealType"
+        class="form-control mb-2"
+        placeholder="Meal Type"
+        required
+        [(ngModel)]="calorie.mealType">
+
+      <input
+        type="number"
+        name="calories"
+        class="form-control mb-2"
+        placeholder="Calories"
+        min="1"
+        required
+        [(ngModel)]="calorie.calories">
+
+      <input
+        type="number"
+        name="quantity"
+        class="form-control mb-2"
+        placeholder="Quantity"
+        min="1"
+        required
+        [(ngModel)]="calorie.quantity">
+
+      <button
+        type="submit"
+        class="btn btn-success"
+        [disabled]="isSaving || calorieForm.invalid">
+
+        {{ isSaving ? 'Saving...' : 'Add Calories' }}
+
+      </button>
+
+    </form>
+
+    <div
+      *ngIf="successMessage"
+      class="alert alert-success mt-3 mb-0">
+      {{ successMessage }}
+    </div>
+
+    <div
+      *ngIf="errorMessage"
+      class="alert alert-danger mt-3 mb-0">
+      {{ errorMessage }}
+    </div>
+
+  </div>
+
+  <div class="card shadow p-4 mt-4">
+
+    <h3>Total Calories: {{ totalCalories }}</h3>
+
+    <table class="table table-bordered mt-3">
+
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Food</th>
+          <th>Meal</th>
+          <th>Calories</th>
+          <th>Quantity</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let item of caloriesList">
+
+          <td>{{ item.createdDate | date: 'short' }}</td>
+          <td>{{ item.foodName }}</td>
+          <td>{{ item.mealType }}</td>
+          <td>{{ item.calories }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-danger btn-sm"
+              (click)="deleteCalorie(item.calorieId)">
+              Delete
+            </button>
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

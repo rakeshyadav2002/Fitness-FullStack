@@ -15,3 +15,87 @@ WHERE [u].[Email] = @__dto_Email_0
 2026-05-29 10:00:10.736 +05:30 [INF] Executed endpoint 'FitnessAPI.Controllers.AuthController.Login (FitnessAPI)'
 2026-05-29 10:00:10.736 +05:30 [INF] RESPONSE => 200 BODY => eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiUmFrZXNoIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoicmFrZXNoQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiVXNlcklkIjoiMSIsImV4cCI6MTc4MDAzNjIxMCwiaXNzIjoiRml0bmVzc0FQSSIsImF1ZCI6IkZpdG5lc3NVc2VycyJ9._t915m7NxJkpiGTZ2k1KGoLikv8CnhGoT9tX_B_oFJg
 2026-05-29 10:00:10.738 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44337/api/Auth/login - 200 null text/plain; charset=utf-8 412.2318ms
+2026-05-29 18:13:15.299 +05:30 [INF] User profile is available. Using 'C:\Users\losst\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-29 18:13:15.951 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44337/swagger/index.html - null null
+2026-05-29 18:13:16.151 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-29 18:13:16.152 +05:30 [INF] Hosting environment: Development
+2026-05-29 18:13:16.152 +05:30 [INF] Content root path: D:\Fitness-FullStack\FitnessAPI
+2026-05-29 18:13:16.533 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44337/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-29 18:13:16.528 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44337/swagger/index.html - 200 null text/html;charset=utf-8 598.621ms
+2026-05-29 18:13:16.560 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44337/_vs/browserLink - null null
+2026-05-29 18:13:16.565 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44337/_framework/aspnetcore-browser-refresh.js - 200 14925 application/javascript; charset=utf-8 29.5814ms
+2026-05-29 18:13:16.688 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44337/_vs/browserLink - 200 null text/javascript; charset=UTF-8 128.3836ms
+2026-05-29 18:13:16.761 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44337/swagger/v1/swagger.json - null null
+2026-05-29 18:13:16.773 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44337/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.3148ms
+2026-05-29 18:14:18.273 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44337/api/Auth/login - application/json 54
+2026-05-29 18:14:18.351 +05:30 [INF] CORS policy execution successful.
+2026-05-29 18:14:18.365 +05:30 [INF] REQUEST => POST /api/Auth/login BODY => {
+  "email": "rakesh@gmail.com",
+  "password": "123"
+}
+2026-05-29 18:14:21.296 +05:30 [INF] Executing endpoint 'FitnessAPI.Controllers.AuthController.Login (FitnessAPI)'
+2026-05-29 18:14:21.352 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(FitnessAPI.DTOs.LoginDTO) on controller FitnessAPI.Controllers.AuthController (FitnessAPI).
+2026-05-29 18:14:23.912 +05:30 [WRN] No store type was specified for the decimal property 'BMIValue' on entity type 'BMIRecord'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-29 18:14:23.913 +05:30 [WRN] No store type was specified for the decimal property 'Height' on entity type 'BMIRecord'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-29 18:14:23.913 +05:30 [WRN] No store type was specified for the decimal property 'Weight' on entity type 'BMIRecord'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-29 18:14:23.913 +05:30 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'CalorieTracker'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-29 18:14:26.776 +05:30 [INF] Executed DbCommand (205ms) [Parameters=[@__dto_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedDate], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__dto_Email_0
+2026-05-29 18:14:27.631 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2026-05-29 18:14:27.638 +05:30 [INF] Executed action FitnessAPI.Controllers.AuthController.Login (FitnessAPI) in 6279.9092ms
+2026-05-29 18:14:27.639 +05:30 [INF] Executed endpoint 'FitnessAPI.Controllers.AuthController.Login (FitnessAPI)'
+2026-05-29 18:14:27.641 +05:30 [INF] RESPONSE => 200 BODY => eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiUmFrZXNoIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoicmFrZXNoQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiVXNlcklkIjoiMSIsImV4cCI6MTc4MDA2NTg2NywiaXNzIjoiRml0bmVzc0FQSSIsImF1ZCI6IkZpdG5lc3NVc2VycyJ9.toD_ONBdloqIYRd6sp2QF3Td3stXq2wgy6KESUP5PbE
+2026-05-29 18:14:27.657 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44337/api/Auth/login - 200 null text/plain; charset=utf-8 9386.031ms
+2026-05-29 18:15:10.971 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:44337/api/Auth/login - null null
+2026-05-29 18:15:10.991 +05:30 [INF] CORS policy execution successful.
+2026-05-29 18:15:11.003 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:44337/api/Auth/login - 204 null null 33.1654ms
+2026-05-29 18:15:11.006 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44337/api/Auth/login - application/json 45
+2026-05-29 18:15:11.007 +05:30 [INF] CORS policy execution successful.
+2026-05-29 18:15:11.008 +05:30 [INF] REQUEST => POST /api/Auth/login BODY => {"email":"rakesh@gmail.com","password":"123"}
+2026-05-29 18:15:11.010 +05:30 [INF] Executing endpoint 'FitnessAPI.Controllers.AuthController.Login (FitnessAPI)'
+2026-05-29 18:15:11.011 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(FitnessAPI.DTOs.LoginDTO) on controller FitnessAPI.Controllers.AuthController (FitnessAPI).
+2026-05-29 18:15:11.071 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__dto_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedDate], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__dto_Email_0
+2026-05-29 18:15:11.371 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2026-05-29 18:15:11.372 +05:30 [INF] Executed action FitnessAPI.Controllers.AuthController.Login (FitnessAPI) in 360.7174ms
+2026-05-29 18:15:11.372 +05:30 [INF] Executed endpoint 'FitnessAPI.Controllers.AuthController.Login (FitnessAPI)'
+2026-05-29 18:15:11.372 +05:30 [INF] RESPONSE => 200 BODY => eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiUmFrZXNoIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoicmFrZXNoQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiVXNlcklkIjoiMSIsImV4cCI6MTc4MDA2NTkxMSwiaXNzIjoiRml0bmVzc0FQSSIsImF1ZCI6IkZpdG5lc3NVc2VycyJ9.lVAFjKj-LFUMq5sLERevBzvUYaEwBtDRBScjc3EekbU
+2026-05-29 18:15:11.374 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44337/api/Auth/login - 200 null text/plain; charset=utf-8 368.3615ms
+2026-05-29 18:30:54.449 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:44337/api/Auth/login - null null
+2026-05-29 18:30:54.453 +05:30 [INF] CORS policy execution successful.
+2026-05-29 18:30:54.453 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:44337/api/Auth/login - 204 null null 12.2613ms
+2026-05-29 18:30:54.456 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44337/api/Auth/login - application/json 45
+2026-05-29 18:30:54.457 +05:30 [INF] CORS policy execution successful.
+2026-05-29 18:30:54.457 +05:30 [INF] REQUEST => POST /api/Auth/login BODY => {"email":"rakesh@gmail.com","password":"123"}
+2026-05-29 18:30:54.461 +05:30 [INF] Executing endpoint 'FitnessAPI.Controllers.AuthController.Login (FitnessAPI)'
+2026-05-29 18:30:54.461 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(FitnessAPI.DTOs.LoginDTO) on controller FitnessAPI.Controllers.AuthController (FitnessAPI).
+2026-05-29 18:30:54.701 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@__dto_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedDate], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__dto_Email_0
+2026-05-29 18:30:54.987 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2026-05-29 18:30:54.988 +05:30 [INF] Executed action FitnessAPI.Controllers.AuthController.Login (FitnessAPI) in 527.0321ms
+2026-05-29 18:30:54.988 +05:30 [INF] Executed endpoint 'FitnessAPI.Controllers.AuthController.Login (FitnessAPI)'
+2026-05-29 18:30:54.989 +05:30 [INF] RESPONSE => 200 BODY => eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiUmFrZXNoIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoicmFrZXNoQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiVXNlcklkIjoiMSIsImV4cCI6MTc4MDA2Njg1NCwiaXNzIjoiRml0bmVzc0FQSSIsImF1ZCI6IkZpdG5lc3NVc2VycyJ9.XuZK2E1V2MofM9Y8B3T4tigXycaAQKUz50V13gr8FH4
+2026-05-29 18:30:54.990 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44337/api/Auth/login - 200 null text/plain; charset=utf-8 533.7007ms
+2026-05-29 18:34:54.427 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:44337/api/Auth/login - null null
+2026-05-29 18:34:54.432 +05:30 [INF] CORS policy execution successful.
+2026-05-29 18:34:54.459 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:44337/api/Auth/login - 204 null null 33.2015ms
+2026-05-29 18:34:54.469 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44337/api/Auth/login - application/json 45
+2026-05-29 18:34:54.469 +05:30 [INF] CORS policy execution successful.
+2026-05-29 18:34:54.469 +05:30 [INF] REQUEST => POST /api/Auth/login BODY => {"email":"rakesh@gmail.com","password":"123"}
+2026-05-29 18:34:54.470 +05:30 [INF] Executing endpoint 'FitnessAPI.Controllers.AuthController.Login (FitnessAPI)'
+2026-05-29 18:34:54.470 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(FitnessAPI.DTOs.LoginDTO) on controller FitnessAPI.Controllers.AuthController (FitnessAPI).
+2026-05-29 18:34:54.506 +05:30 [INF] Executed DbCommand (30ms) [Parameters=[@__dto_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedDate], [u].[Email], [u].[FullName], [u].[IsActive], [u].[PasswordHash]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__dto_Email_0
+2026-05-29 18:34:54.784 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2026-05-29 18:34:54.784 +05:30 [INF] Executed action FitnessAPI.Controllers.AuthController.Login (FitnessAPI) in 313.882ms
+2026-05-29 18:34:54.784 +05:30 [INF] Executed endpoint 'FitnessAPI.Controllers.AuthController.Login (FitnessAPI)'
+2026-05-29 18:34:54.785 +05:30 [INF] RESPONSE => 200 BODY => eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiUmFrZXNoIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoicmFrZXNoQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiVXNlcklkIjoiMSIsImV4cCI6MTc4MDA2NzA5NCwiaXNzIjoiRml0bmVzc0FQSSIsImF1ZCI6IkZpdG5lc3NVc2VycyJ9.oXdKAomW1bLLaSIG_nxSFXA31-wa28WpFTUpAxLpENk
+2026-05-29 18:34:54.786 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44337/api/Auth/login - 200 null text/plain; charset=utf-8 317.6405ms

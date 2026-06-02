@@ -1,4 +1,4 @@
-﻿namespace FitnessAPI.DTOs
+namespace FitnessAPI.DTOs
 {
     public class CalorieDTO
     {
@@ -13,5 +13,7 @@
         public int Calories { get; set; }
 
         public decimal Quantity { get; set; }
+
+        public DateTime CreatedDate { get; set; }
     }
 }

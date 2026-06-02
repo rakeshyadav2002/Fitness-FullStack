@@ -1,0 +1,22 @@
+.diet-plan-card {
+  border-radius: 8px;
+}
+
+.calorie-badge {
+  background-color: #e8f3ff;
+  border: 1px solid #b8dcff;
+  border-radius: 6px;
+  color: #0d4f8b;
+  display: inline-block;
+  font-weight: 600;
+  padding: 6px 10px;
+}
+
+.meal-section {
+  border-top: 1px solid #eeeeee;
+  padding-top: 10px;
+}
+
+.meal-section p {
+  margin-bottom: 10px;
+}

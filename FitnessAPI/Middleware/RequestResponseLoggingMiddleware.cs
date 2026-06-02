@@ -51,23 +51,35 @@ namespace FitnessAPI.Middleware
 
             context.Response.Body = responseBody;
 
-            await _next(context);
+            try
+            {
+                await _next(context);
 
-            responseBody.Seek(0, SeekOrigin.Begin);
+                responseBody.Seek(0, SeekOrigin.Begin);
 
-            var responseText =
-                await new StreamReader(responseBody)
-                .ReadToEndAsync();
+                var responseText =
+                    await new StreamReader(responseBody)
+                    .ReadToEndAsync();
 
-            _logger.LogInformation(
-                $"RESPONSE => " +
-                $"{context.Response.StatusCode} " +
-                $"BODY => {responseText}");
+                _logger.LogInformation(
+                    $"RESPONSE => " +
+                    $"{context.Response.StatusCode} " +
+                    $"BODY => {responseText}");
 
-            responseBody.Seek(0, SeekOrigin.Begin);
+                responseBody.Seek(0, SeekOrigin.Begin);
 
-            await responseBody.CopyToAsync(
-                originalBodyStream);
+                await responseBody.CopyToAsync(
+                    originalBodyStream);
+            }
+            catch
+            {
+                context.Response.Body = originalBodyStream;
+                throw;
+            }
+            finally
+            {
+                context.Response.Body = originalBodyStream;
+            }
         }
     }
 }

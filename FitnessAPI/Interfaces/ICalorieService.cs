@@ -4,10 +4,12 @@ namespace FitnessAPI.Interfaces
 {
     public interface ICalorieService
     {
-        Task<string> AddAsync(CalorieDTO dto);
+        Task<CalorieDTO> AddAsync(CalorieDTO dto);
 
-        Task<List<object>> GetAllAsync();
+        Task<List<CalorieDTO>> GetAllAsync();
 
-        Task<List<object>> GetByUserAsync(int userId);
+        Task<List<CalorieDTO>> GetByUserAsync(int userId);
+
+        Task<bool> DeleteAsync(int calorieId, int userId);
     }
 }

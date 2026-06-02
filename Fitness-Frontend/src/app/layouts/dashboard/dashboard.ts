@@ -1,50 +1,42 @@
-import { Component } from '@angular/core';
-
-import { Router } from '@angular/router';
-
-import { NavbarComponent }
-from '../../shared/navbar/navbar';
-
-import { SidebarComponent }
-from '../../shared/sidebar/sidebar';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import {
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterOutlet
+} from '@angular/router';
+import { filter } from 'rxjs';
+import { NavbarComponent } from '../../shared/navbar/navbar';
+import { SidebarComponent } from '../../shared/sidebar/sidebar';
 
 @Component({
   selector: 'app-dashboard',
-
   standalone: true,
-
   imports: [
+    CommonModule,
+    RouterLink,
+    RouterOutlet,
     NavbarComponent,
     SidebarComponent
   ],
-
   templateUrl: './dashboard.html',
-
   styleUrls: ['./dashboard.css']
 })
-
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
+  isDashboardHome = true;
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.updateDashboardHomeState();
 
-    const token = localStorage.getItem('token');
-
-    if (!token) {
-
-      alert('Please Login First');
-
-      this.router.navigate(['/']);
-    }
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => this.updateDashboardHomeState());
   }
 
-  logout() {
-
-    localStorage.removeItem('token');
-
-    alert('Logout Successful');
-
-    this.router.navigate(['/']);
+  private updateDashboardHomeState(): void {
+    this.isDashboardHome = this.router.url === '/dashboard';
   }
 }

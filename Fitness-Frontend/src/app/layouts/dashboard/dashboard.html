@@ -1,44 +1,80 @@
 <div class="d-flex">
 
-  <!-- Sidebar -->
   <app-sidebar></app-sidebar>
 
   <div class="flex-grow-1">
 
-    <!-- Navbar -->
     <app-navbar></app-navbar>
 
-    <!-- Main Content -->
-    <div class="container mt-4">
+    <div
+      *ngIf="isDashboardHome"
+      class="container mt-4">
 
-      <h2>Fitness Dashboard</h2>
+      <h2>
+        Welcome to Fitness Dashboard
+      </h2>
 
       <div class="row mt-4">
 
         <div class="col-md-4">
-          <div class="card shadow p-3">
-            <h5>BMI</h5>
-            <p>Check your Body Mass Index</p>
-          </div>
+          <a
+            class="card shadow p-4 text-decoration-none text-dark"
+            routerLink="/dashboard/bmi">
+
+            <i class="bi bi-heart-pulse fs-1 text-primary"></i>
+
+            <h4 class="mt-3">
+              BMI
+            </h4>
+
+            <p>
+              Check your body mass index
+            </p>
+
+          </a>
         </div>
 
         <div class="col-md-4">
-          <div class="card shadow p-3">
-            <h5>Calories</h5>
-            <p>Track daily calories</p>
-          </div>
+          <a
+            class="card shadow p-4 text-decoration-none text-dark"
+            routerLink="/dashboard/calories">
+
+            <i class="bi bi-fire fs-1 text-danger"></i>
+
+            <h4 class="mt-3">
+              Calories
+            </h4>
+
+            <p>
+              Track daily calories
+            </p>
+
+          </a>
         </div>
 
         <div class="col-md-4">
-          <div class="card shadow p-3">
-            <h5>Profile</h5>
-            <p>Manage your profile</p>
-          </div>
+          <a
+            class="card shadow p-4 text-decoration-none text-dark"
+            routerLink="/dashboard/profile">
+
+            <i class="bi bi-person-circle fs-1 text-success"></i>
+
+            <h4 class="mt-3">
+              Profile
+            </h4>
+
+            <p>
+              Manage your profile
+            </p>
+
+          </a>
         </div>
 
       </div>
 
     </div>
+
+    <router-outlet></router-outlet>
 
   </div>
 

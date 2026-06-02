@@ -1,1 +1,47 @@
-<p>bmi works!</p>
+<div class="container mt-5">
+
+  <div class="card shadow p-4">
+
+    <h2 class="text-center mb-4">
+      BMI Calculator
+    </h2>
+
+    <input
+      type="number"
+      class="form-control mb-3"
+      placeholder="Enter Height in meters"
+      [(ngModel)]="height">
+
+    <input
+      type="number"
+      class="form-control mb-3"
+      placeholder="Enter Weight in KG"
+      [(ngModel)]="weight">
+
+    <button
+      class="btn btn-primary w-100"
+      (click)="calculateBMI()">
+
+      Calculate BMI
+
+    </button>
+
+    <div
+      *ngIf="bmi > 0"
+      class="alert alert-success mt-4">
+
+      <h4>
+        BMI:
+        {{ bmi }}
+      </h4>
+
+      <h5>
+        Category:
+        {{ category }}
+      </h5>
+
+    </div>
+
+  </div>
+
+</div>

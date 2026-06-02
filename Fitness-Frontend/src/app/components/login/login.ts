@@ -46,10 +46,7 @@ export class LoginComponent {
 
         next: (response) => {
 
-          localStorage.setItem(
-            'token',
-            response
-          );
+          this.authService.saveToken(response);
 
           alert('Login Successful');
 

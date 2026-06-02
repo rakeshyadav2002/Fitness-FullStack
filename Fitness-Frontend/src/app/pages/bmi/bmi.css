@@ -1,0 +1,13 @@
+.card {
+
+  max-width: 500px;
+
+  margin: auto;
+
+  border-radius: 15px;
+}
+
+button {
+
+  font-size: 18px;
+}

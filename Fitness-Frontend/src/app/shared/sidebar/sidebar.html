@@ -1,31 +1,42 @@
-<div
-  class="bg-dark text-white p-3"
-  style="width: 250px; height: 100vh;">
+<div class="sidebar bg-dark text-white p-3 vh-100">
 
-  <h4 class="mb-4">Menu</h4>
+  <h3 class="text-center mb-4">
+    Fitness App
+  </h3>
 
   <ul class="nav flex-column">
 
     <li class="nav-item mb-3">
       <a class="nav-link text-white" routerLink="/dashboard">
+        <i class="bi bi-speedometer2"></i>
         Dashboard
       </a>
     </li>
 
     <li class="nav-item mb-3">
-      <a class="nav-link text-white" routerLink="/bmi">
-        BMI Calculator
+      <a class="nav-link text-white" routerLink="/dashboard/bmi">
+        <i class="bi bi-heart-pulse"></i>
+        BMI
       </a>
     </li>
 
     <li class="nav-item mb-3">
-      <a class="nav-link text-white" routerLink="/calories">
+      <a class="nav-link text-white" routerLink="/dashboard/calories">
+        <i class="bi bi-fire"></i>
         Calories
       </a>
     </li>
 
     <li class="nav-item mb-3">
-      <a class="nav-link text-white" routerLink="/profile">
+      <a class="nav-link text-white" routerLink="/dashboard/dietplans">
+        <i class="bi bi-card-checklist"></i>
+        Diet Plans
+      </a>
+    </li>
+
+    <li class="nav-item mb-3">
+      <a class="nav-link text-white" routerLink="/dashboard/profile">
+        <i class="bi bi-person-circle"></i>
         Profile
       </a>
     </li>

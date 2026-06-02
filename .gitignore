@@ -1,0 +1,7 @@
+.buildcheck/
+**/bin/
+**/obj/
+**/.vs/
+**/Logs/*.txt
+**/dist/
+node_modules/

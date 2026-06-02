@@ -1,0 +1,76 @@
+<div class="container mt-4">
+
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="mb-0">Diet Plans</h3>
+
+    <button
+      type="button"
+      class="btn btn-outline-primary btn-sm"
+      (click)="loadDietPlans()">
+      Refresh
+    </button>
+  </div>
+
+  <div
+    *ngIf="isLoading"
+    class="alert alert-info">
+    Loading diet plans...
+  </div>
+
+  <div
+    *ngIf="errorMessage"
+    class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div class="row g-3">
+
+    <div
+      class="col-md-4"
+      *ngFor="let plan of dietPlans">
+
+      <div class="card h-100 shadow-sm diet-plan-card">
+
+        <div class="card-body">
+
+          <h4 class="card-title">
+            {{ plan.planName }}
+          </h4>
+
+          <p class="text-muted mb-2">
+            {{ plan.goalType }}
+          </p>
+
+          <div class="calorie-badge mb-3">
+            {{ plan.caloriesPerDay }} Calories/day
+          </div>
+
+          <div class="meal-section">
+            <strong>Breakfast</strong>
+            <p>{{ plan.breakfast }}</p>
+          </div>
+
+          <div class="meal-section">
+            <strong>Lunch</strong>
+            <p>{{ plan.lunch }}</p>
+          </div>
+
+          <div class="meal-section">
+            <strong>Dinner</strong>
+            <p>{{ plan.dinner }}</p>
+          </div>
+
+          <div class="meal-section">
+            <strong>Snacks</strong>
+            <p>{{ plan.snacks }}</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
