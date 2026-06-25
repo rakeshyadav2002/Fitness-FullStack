@@ -1,0 +1,155 @@
+.page-header {
+  align-items: end;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.summary-card {
+  min-width: 190px;
+  padding: 18px;
+}
+
+.summary-card span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.summary-card strong {
+  display: block;
+  font-size: 2rem;
+  line-height: 1;
+  margin-top: 8px;
+}
+
+.calories-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(320px, 0.48fr) minmax(0, 1fr);
+}
+
+.calorie-form,
+.records-panel {
+  padding: 24px;
+}
+
+.calorie-form {
+  align-self: start;
+  display: grid;
+  gap: 16px;
+}
+
+.form-title {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.form-title i {
+  align-items: center;
+  background: rgba(19, 163, 109, 0.13);
+  border-radius: var(--radius);
+  color: var(--primary);
+  display: inline-flex;
+  font-size: 1.4rem;
+  height: 48px;
+  justify-content: center;
+  width: 48px;
+}
+
+.form-title h3,
+.records-header h3 {
+  font-size: 1.25rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.form-title p {
+  color: var(--muted);
+  margin: 2px 0 0;
+}
+
+.form-row {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.records-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.empty-state {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 320px;
+  text-align: center;
+}
+
+.empty-state i {
+  color: var(--primary);
+  font-size: 2.4rem;
+}
+
+.empty-state h4 {
+  color: var(--text);
+  font-weight: 900;
+  margin: 12px 0 6px;
+}
+
+.meal-pill {
+  background: var(--accent-soft);
+  border-radius: var(--radius);
+  color: var(--accent);
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 7px 9px;
+}
+
+.icon-button {
+  align-items: center;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  display: inline-flex;
+  height: 38px;
+  justify-content: center;
+  transition: transform 180ms ease, border-color 180ms ease;
+  width: 38px;
+}
+
+.icon-button:hover:not(:disabled) {
+  border-color: var(--danger);
+  transform: translateY(-1px);
+}
+
+.icon-button.danger {
+  color: var(--danger);
+}
+
+@media (max-width: 1050px) {
+  .calories-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .page-header,
+  .records-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}

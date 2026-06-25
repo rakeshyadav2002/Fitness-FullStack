@@ -1,7 +1,131 @@
-.card {
-  max-width: 700px;
+.profile-hero {
+  align-items: center;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  margin-bottom: 18px;
+  padding: 26px;
 }
 
-th {
-  width: 200px;
+.avatar {
+  align-items: center;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  border-radius: var(--radius);
+  color: #ffffff;
+  display: inline-flex;
+  font-size: 2rem;
+  font-weight: 900;
+  height: 76px;
+  justify-content: center;
+  width: 76px;
+}
+
+.profile-copy h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.profile-copy p,
+.card-heading p {
+  color: var(--muted);
+  margin: 4px 0 0;
+}
+
+.profile-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.profile-card {
+  padding: 24px;
+}
+
+.card-heading {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.card-heading > i {
+  align-items: center;
+  background: rgba(19, 163, 109, 0.13);
+  border-radius: var(--radius);
+  color: var(--primary);
+  display: inline-flex;
+  font-size: 1.4rem;
+  height: 48px;
+  justify-content: center;
+  width: 48px;
+}
+
+.card-heading h3 {
+  font-size: 1.25rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.detail-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.detail-list div,
+.profile-stat {
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+}
+
+.detail-list dt {
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.detail-list dd {
+  font-weight: 800;
+  margin: 4px 0 0;
+}
+
+.stat-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.profile-stat {
+  display: grid;
+  gap: 6px;
+}
+
+.profile-stat i {
+  color: var(--primary);
+  font-size: 1.35rem;
+}
+
+.profile-stat span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.profile-stat strong {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .profile-hero,
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
 }

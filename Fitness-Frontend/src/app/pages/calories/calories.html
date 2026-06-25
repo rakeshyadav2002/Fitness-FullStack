@@ -1,115 +1,175 @@
-<div class="container mt-4">
+<section class="page-shell calories-page">
+  <div class="page-header">
+    <div>
+      <p class="eyebrow">Nutrition tracker</p>
+      <h2 class="page-title">Calories</h2>
+      <p class="page-subtitle">
+        Log meals, review your records, and keep a clear daily calorie picture.
+      </p>
+    </div>
 
-  <div class="card shadow p-4">
+    <div class="summary-card app-card">
+      <span>Total calories</span>
+      <strong>{{ totalCalories }}</strong>
+    </div>
+  </div>
 
-    <h3>Add Calories</h3>
-
+  <div class="calories-grid">
     <form
       #calorieForm="ngForm"
+      class="calorie-form app-card"
       autocomplete="off"
       novalidate
       (ngSubmit)="addCalorie(calorieForm)">
 
-      <input
-        type="text"
-        name="foodName"
-        class="form-control mb-2"
-        placeholder="Food Name"
-        required
-        [(ngModel)]="calorie.foodName">
+      <div class="form-title">
+        <i class="bi bi-plus-circle"></i>
+        <div>
+          <h3>Add meal entry</h3>
+          <p>Capture food, meal type, calories, and quantity.</p>
+        </div>
+      </div>
 
-      <input
-        type="text"
-        name="mealType"
-        class="form-control mb-2"
-        placeholder="Meal Type"
-        required
-        [(ngModel)]="calorie.mealType">
+      <div>
+        <label class="form-label" for="foodName">Food name</label>
+        <div class="input-icon-wrap">
+          <i class="bi bi-egg-fried"></i>
+          <input
+            id="foodName"
+            type="text"
+            name="foodName"
+            class="form-control"
+            placeholder="Grilled chicken bowl"
+            required
+            [(ngModel)]="calorie.foodName">
+        </div>
+      </div>
 
-      <input
-        type="number"
-        name="calories"
-        class="form-control mb-2"
-        placeholder="Calories"
-        min="1"
-        required
-        [(ngModel)]="calorie.calories">
+      <div>
+        <label class="form-label" for="mealType">Meal type</label>
+        <div class="input-icon-wrap">
+          <i class="bi bi-clock-history"></i>
+          <select
+            id="mealType"
+            name="mealType"
+            class="form-select"
+            required
+            [(ngModel)]="calorie.mealType">
+            <option value="" disabled>Select meal</option>
+            <option *ngFor="let meal of mealTypes" [value]="meal">{{ meal }}</option>
+          </select>
+        </div>
+      </div>
 
-      <input
-        type="number"
-        name="quantity"
-        class="form-control mb-2"
-        placeholder="Quantity"
-        min="1"
-        required
-        [(ngModel)]="calorie.quantity">
+      <div class="form-row">
+        <div>
+          <label class="form-label" for="calories">Calories</label>
+          <div class="input-icon-wrap">
+            <i class="bi bi-fire"></i>
+            <input
+              id="calories"
+              type="number"
+              name="calories"
+              class="form-control"
+              placeholder="420"
+              min="1"
+              required
+              [(ngModel)]="calorie.calories">
+          </div>
+        </div>
+
+        <div>
+          <label class="form-label" for="quantity">Quantity</label>
+          <div class="input-icon-wrap">
+            <i class="bi bi-layers"></i>
+            <input
+              id="quantity"
+              type="number"
+              name="quantity"
+              class="form-control"
+              placeholder="1"
+              min="1"
+              required
+              [(ngModel)]="calorie.quantity">
+          </div>
+        </div>
+      </div>
 
       <button
         type="submit"
-        class="btn btn-success"
+        class="btn-fitness w-100"
         [disabled]="isSaving || calorieForm.invalid">
-
-        {{ isSaving ? 'Saving...' : 'Add Calories' }}
-
+        <app-loading-spinner *ngIf="isSaving" label="Saving calories"></app-loading-spinner>
+        <span>{{ isSaving ? 'Saving entry...' : 'Add calories' }}</span>
       </button>
 
+      <div *ngIf="successMessage" class="status-message status-success">
+        {{ successMessage }}
+      </div>
+
+      <div *ngIf="errorMessage" class="status-message status-error">
+        {{ errorMessage }}
+      </div>
     </form>
 
-    <div
-      *ngIf="successMessage"
-      class="alert alert-success mt-3 mb-0">
-      {{ successMessage }}
+    <div class="records-panel app-card">
+      <div class="records-header">
+        <div>
+          <p class="eyebrow">Meal records</p>
+          <h3>{{ caloriesList.length }} entries</h3>
+        </div>
+
+        <span class="metric-chip">
+          <i class="bi bi-fire"></i>
+          {{ totalCalories }} kcal
+        </span>
+      </div>
+
+      <div *ngIf="caloriesList.length === 0" class="empty-state">
+        <i class="bi bi-journal-plus"></i>
+        <h4>No calorie records yet</h4>
+        <p>Add your first meal entry to start building your daily nutrition history.</p>
+      </div>
+
+      <div *ngIf="caloriesList.length > 0" class="table-responsive">
+        <table class="table align-middle">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Food</th>
+              <th>Meal</th>
+              <th>Calories</th>
+              <th>Qty</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let item of caloriesList">
+              <td>{{ item.createdDate | date: 'short' }}</td>
+              <td>
+                <strong>{{ item.foodName }}</strong>
+              </td>
+              <td>
+                <span class="meal-pill">{{ item.mealType }}</span>
+              </td>
+              <td>{{ item.calories }}</td>
+              <td>{{ item.quantity }}</td>
+              <td class="text-end">
+                <button
+                  type="button"
+                  class="icon-button danger"
+                  [disabled]="deletingId === item.calorieId"
+                  [attr.aria-label]="'Delete ' + item.foodName"
+                  (click)="deleteCalorie(item.calorieId)">
+                  <app-loading-spinner *ngIf="deletingId === item.calorieId" label="Deleting"></app-loading-spinner>
+                  <i *ngIf="deletingId !== item.calorieId" class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-
-    <div
-      *ngIf="errorMessage"
-      class="alert alert-danger mt-3 mb-0">
-      {{ errorMessage }}
-    </div>
-
   </div>
-
-  <div class="card shadow p-4 mt-4">
-
-    <h3>Total Calories: {{ totalCalories }}</h3>
-
-    <table class="table table-bordered mt-3">
-
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Food</th>
-          <th>Meal</th>
-          <th>Calories</th>
-          <th>Quantity</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-        <tr *ngFor="let item of caloriesList">
-
-          <td>{{ item.createdDate | date: 'short' }}</td>
-          <td>{{ item.foodName }}</td>
-          <td>{{ item.mealType }}</td>
-          <td>{{ item.calories }}</td>
-          <td>{{ item.quantity }}</td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-danger btn-sm"
-              (click)="deleteCalorie(item.calorieId)">
-              Delete
-            </button>
-          </td>
-
-        </tr>
-
-      </tbody>
-
-    </table>
-
-  </div>
-
-</div>
+</section>

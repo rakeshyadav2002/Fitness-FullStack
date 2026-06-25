@@ -1,22 +1,109 @@
+.page-header {
+  align-items: end;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.loading-panel {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-weight: 800;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 18px;
+}
+
+.diet-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .diet-plan-card {
-  border-radius: 8px;
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+}
+
+.plan-top {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.plan-icon {
+  align-items: center;
+  background: rgba(19, 163, 109, 0.13);
+  border-radius: var(--radius);
+  color: var(--primary);
+  display: inline-flex;
+  font-size: 1.45rem;
+  height: 50px;
+  justify-content: center;
+  width: 50px;
 }
 
 .calorie-badge {
-  background-color: #e8f3ff;
-  border: 1px solid #b8dcff;
-  border-radius: 6px;
-  color: #0d4f8b;
-  display: inline-block;
-  font-weight: 600;
-  padding: 6px 10px;
+  background: var(--accent-soft);
+  border-radius: var(--radius);
+  color: var(--accent);
+  font-size: 0.86rem;
+  font-weight: 900;
+  padding: 8px 10px;
+}
+
+.diet-plan-card h3 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin: -4px 0 0;
+}
+
+.meal-list {
+  display: grid;
+  gap: 10px;
 }
 
 .meal-section {
-  border-top: 1px solid #eeeeee;
-  padding-top: 10px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+}
+
+.meal-section span {
+  align-items: center;
+  color: var(--text);
+  display: flex;
+  font-weight: 900;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.meal-section i {
+  color: var(--primary);
 }
 
 .meal-section p {
-  margin-bottom: 10px;
+  color: var(--muted);
+  margin: 0;
+}
+
+@media (max-width: 1100px) {
+  .diet-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .diet-grid {
+    grid-template-columns: 1fr;
+  }
 }

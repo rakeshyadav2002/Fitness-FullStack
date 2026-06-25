@@ -8,6 +8,10 @@ type JwtPayload = {
   email?: string;
   exp?: number;
   role?: string;
+  unique_name?: string;
+  name?: string;
+  'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'?: string;
+  'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'?: string;
 };
 
 @Injectable({
@@ -65,6 +69,23 @@ export class AuthService {
     const userId = this.getTokenPayload()?.UserId;
 
     return userId ? Number(userId) : null;
+  }
+
+  getUserName(): string {
+    const payload = this.getTokenPayload();
+
+    return payload?.name
+      ?? payload?.unique_name
+      ?? payload?.['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+      ?? 'Fitness Member';
+  }
+
+  getUserEmail(): string {
+    const payload = this.getTokenPayload();
+
+    return payload?.email
+      ?? payload?.['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress']
+      ?? 'member@fitness.app';
   }
 
   private getTokenPayload(): JwtPayload | null {

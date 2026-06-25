@@ -1,46 +1,48 @@
-<div class="sidebar bg-dark text-white p-3 vh-100">
+<aside class="sidebar">
+  <a class="sidebar-brand" routerLink="/dashboard">
+    <span class="brand-mark">
+      <i class="bi bi-activity"></i>
+    </span>
+    <span>
+      <strong>FitTrack Pro</strong>
+      <small>Fitness OS</small>
+    </span>
+  </a>
 
-  <h3 class="text-center mb-4">
-    Fitness App
-  </h3>
+  <nav class="sidebar-nav" aria-label="Main navigation">
+    <a
+      routerLink="/dashboard"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      <i class="bi bi-speedometer2"></i>
+      Dashboard
+    </a>
 
-  <ul class="nav flex-column">
+    <a routerLink="/dashboard/bmi" routerLinkActive="active">
+      <i class="bi bi-heart-pulse"></i>
+      BMI
+    </a>
 
-    <li class="nav-item mb-3">
-      <a class="nav-link text-white" routerLink="/dashboard">
-        <i class="bi bi-speedometer2"></i>
-        Dashboard
-      </a>
-    </li>
+    <a routerLink="/dashboard/calories" routerLinkActive="active">
+      <i class="bi bi-fire"></i>
+      Calories
+    </a>
 
-    <li class="nav-item mb-3">
-      <a class="nav-link text-white" routerLink="/dashboard/bmi">
-        <i class="bi bi-heart-pulse"></i>
-        BMI
-      </a>
-    </li>
+    <a routerLink="/dashboard/dietplans" routerLinkActive="active">
+      <i class="bi bi-card-checklist"></i>
+      Diet Plans
+    </a>
 
-    <li class="nav-item mb-3">
-      <a class="nav-link text-white" routerLink="/dashboard/calories">
-        <i class="bi bi-fire"></i>
-        Calories
-      </a>
-    </li>
+    <a routerLink="/dashboard/profile" routerLinkActive="active">
+      <i class="bi bi-person-circle"></i>
+      Profile
+    </a>
+  </nav>
 
-    <li class="nav-item mb-3">
-      <a class="nav-link text-white" routerLink="/dashboard/dietplans">
-        <i class="bi bi-card-checklist"></i>
-        Diet Plans
-      </a>
-    </li>
-
-    <li class="nav-item mb-3">
-      <a class="nav-link text-white" routerLink="/dashboard/profile">
-        <i class="bi bi-person-circle"></i>
-        Profile
-      </a>
-    </li>
-
-  </ul>
-
-</div>
+  <div class="sidebar-footer">
+    <span class="metric-chip">
+      <i class="bi bi-lightning-charge"></i>
+      Consistency wins
+    </span>
+  </div>
+</aside>

@@ -6,7 +6,7 @@ namespace FitnessAPI.Data
     public class FitnessDBContext : DbContext
     {
         public FitnessDBContext(
-            DbContextOptions<FitnessDBContext> options)
+            DbContextOptions<FitnessDBContext> options) 
             : base(options)
         {
         }

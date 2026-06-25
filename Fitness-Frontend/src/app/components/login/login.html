@@ -1,25 +1,91 @@
-<div class="login-container">
+<main class="auth-page">
+  <div class="auth-topbar">
+    <a class="brand-link" routerLink="/">
+      <span class="brand-mark">
+        <i class="bi bi-activity"></i>
+      </span>
+      FitTrack Pro
+    </a>
 
-  <h1>Login</h1>
+    <app-theme-toggle></app-theme-toggle>
+  </div>
 
-  <input
-    type="email"
-    placeholder="Email"
-    [(ngModel)]="loginData.email">
+  <section class="auth-shell">
+    <div class="auth-visual" aria-hidden="true">
+      <div class="visual-content">
+        <p class="eyebrow">Train smarter</p>
+        <h1>Build your strongest routine with clean daily tracking.</h1>
+        <div class="visual-stats">
+          <span><strong>24/7</strong> Progress</span>
+          <span><strong>BMI</strong> Insights</span>
+          <span><strong>Meals</strong> Logged</span>
+        </div>
+      </div>
+    </div>
 
-  <input
-    type="password"
-    placeholder="Password"
-    [(ngModel)]="loginData.password">
+    <div class="auth-card glass-panel">
+      <div class="auth-heading">
+        <p class="eyebrow">Welcome back</p>
+        <h2>Login to your fitness dashboard</h2>
+        <p>Track calories, BMI, plans, and profile progress from one polished workspace.</p>
+      </div>
 
-  <button (click)="login()">
-    Login
-  </button>
+      <form #loginForm="ngForm" class="auth-form" autocomplete="on" novalidate (ngSubmit)="login(loginForm)">
 
-  <br><br>
+        <label class="form-label" for="email">Email address</label>
+        <div class="input-icon-wrap">
+          <i class="bi bi-envelope"></i>
+          <input #email="ngModel" id="email" type="email" name="email" class="form-control"
+            placeholder="you@example.com" email required [(ngModel)]="loginData.email">
+        </div>
+        <div class="field-error" *ngIf="email.invalid && (email.dirty || email.touched)">
+          Please enter a valid email address.
+        </div>
 
-<a routerLink="/register">
-  Create Account
-</a>
+        <label class="form-label" for="password">Password</label>
+        <div class="input-icon-wrap">
+          <i class="bi bi-lock"></i>
+          <input #password="ngModel" id="password" [type]="showPassword ? 'text' : 'password'" name="password"
+            class="form-control pe-5" placeholder="Enter your password" required minlength="6"
+            [(ngModel)]="loginData.password">
+          <button type="button" class="password-toggle"
+            [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'" (click)="showPassword = !showPassword">
+            <i class="bi" [class.bi-eye-slash]="showPassword" [class.bi-eye]="!showPassword"></i>
+          </button>
+        </div>
+        <div class="field-error" *ngIf="password.invalid && (password.dirty || password.touched)">
+          Password must be at least 6 characters.
+        </div>
 
-</div>
+        <div class="auth-options">
+          <label class="remember-option">
+            <input type="checkbox" name="rememberMe" [(ngModel)]="rememberMe">
+            <span>Remember me</span>
+          </label>
+
+          <a href="javascript:void(0)" (click)="forgotPassword()">
+            Forgot password?
+          </a>
+        </div>
+
+        <button type="submit" class="btn-fitness w-100" [disabled]="isLoading || loginForm.invalid">
+          <app-loading-spinner *ngIf="isLoading" label="Signing in"></app-loading-spinner>
+          <span>{{ isLoading ? 'Signing in...' : 'Login' }}</span>
+        </button>
+
+        <div *ngIf="successMessage" class="status-message status-success">
+          {{ successMessage }}
+        </div>
+
+        <div *ngIf="errorMessage" class="status-message status-error">
+          {{ errorMessage }}
+        </div>
+      </form>
+
+      <p class="auth-switch">
+        New to FitTrack Pro?
+        <a routerLink="/register">Create an account</a>
+      </p>
+    </div>
+  </section>
+</main>

@@ -1,35 +1,152 @@
-<div class="register-container">
+<main class="auth-page">
+  <div class="auth-topbar">
+    <a class="brand-link" routerLink="/">
+      <span class="brand-mark">
+        <i class="bi bi-activity"></i>
+      </span>
+      FitTrack Pro
+    </a>
 
-  <h1>Register</h1>
+    <app-theme-toggle></app-theme-toggle>
+  </div>
 
-  <input
-    type="number"
-    placeholder="User Id"
-    [(ngModel)]="registerData.userId">
+  <section class="auth-shell register-shell">
+    <div class="auth-card glass-panel">
+      <div class="auth-heading">
+        <p class="eyebrow">Start strong</p>
+        <h2>Create your fitness account</h2>
+        <p>Set up your profile and unlock BMI, calorie, and diet planning tools.</p>
+      </div>
 
-  <input
-    type="text"
-    placeholder="Full Name"
-    [(ngModel)]="registerData.fullName">
+      <form
+        #registerForm="ngForm"
+        class="auth-form"
+        autocomplete="on"
+        novalidate
+        (ngSubmit)="register(registerForm)">
 
-  <input
-    type="email"
-    placeholder="Email"
-    [(ngModel)]="registerData.email">
+        <label class="form-label" for="fullName">Full name</label>
+        <div class="input-icon-wrap">
+          <i class="bi bi-person"></i>
+          <input
+            #fullName="ngModel"
+            id="fullName"
+            type="text"
+            name="fullName"
+            class="form-control"
+            placeholder="Your full name"
+            required
+            minlength="2"
+            [(ngModel)]="registerData.fullName">
+        </div>
+        <div class="field-error" *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)">
+          Please enter your full name.
+        </div>
 
-  <input
-    type="password"
-    placeholder="Password"
-    [(ngModel)]="registerData.password">
+        <label class="form-label" for="email">Email address</label>
+        <div class="input-icon-wrap">
+          <i class="bi bi-envelope"></i>
+          <input
+            #email="ngModel"
+            id="email"
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="you@example.com"
+            email
+            required
+            [(ngModel)]="registerData.email">
+        </div>
+        <div class="field-error" *ngIf="email.invalid && (email.dirty || email.touched)">
+          Please enter a valid email address.
+        </div>
 
-  <button (click)="register()">
-    Register
-  </button>
+        <label class="form-label" for="password">Password</label>
+        <div class="input-icon-wrap">
+          <i class="bi bi-lock"></i>
+          <input
+            #password="ngModel"
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
+            name="password"
+            class="form-control pe-5"
+            placeholder="Create a strong password"
+            required
+            minlength="6"
+            [(ngModel)]="registerData.password">
+          <button
+            type="button"
+            class="password-toggle"
+            [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+            (click)="showPassword = !showPassword">
+            <i class="bi" [class.bi-eye-slash]="showPassword" [class.bi-eye]="!showPassword"></i>
+          </button>
+        </div>
 
-  <br><br>
+        <div class="strength-meter" [ngClass]="passwordStrength.level">
+          <span [style.width.%]="passwordStrength.score"></span>
+        </div>
+        <div class="strength-label">
+          Password strength: {{ passwordStrength.label }}
+        </div>
 
-  <a routerLink="/">
-    Already have account? Login
-  </a>
+        <label class="form-label" for="confirmPassword">Confirm password</label>
+        <div class="input-icon-wrap">
+          <i class="bi bi-shield-lock"></i>
+          <input
+            #confirm="ngModel"
+            id="confirmPassword"
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            name="confirmPassword"
+            class="form-control pe-5"
+            placeholder="Confirm your password"
+            required
+            [(ngModel)]="confirmPassword">
+          <button
+            type="button"
+            class="password-toggle"
+            [attr.aria-label]="showConfirmPassword ? 'Hide password' : 'Show password'"
+            (click)="showConfirmPassword = !showConfirmPassword">
+            <i class="bi" [class.bi-eye-slash]="showConfirmPassword" [class.bi-eye]="!showConfirmPassword"></i>
+          </button>
+        </div>
+        <div class="field-error" *ngIf="confirm.touched && !passwordsMatch">
+          Passwords must match.
+        </div>
 
-</div>
+        <button
+          type="submit"
+          class="btn-fitness w-100"
+          [disabled]="isLoading || registerForm.invalid || !passwordsMatch">
+          <app-loading-spinner *ngIf="isLoading" label="Creating account"></app-loading-spinner>
+          <span>{{ isLoading ? 'Creating account...' : 'Create account' }}</span>
+        </button>
+
+        <div *ngIf="successMessage" class="status-message status-success">
+          {{ successMessage }}
+        </div>
+
+        <div *ngIf="errorMessage" class="status-message status-error">
+          {{ errorMessage }}
+        </div>
+      </form>
+
+      <p class="auth-switch">
+        Already have an account?
+        <a routerLink="/">Login</a>
+      </p>
+    </div>
+
+    <div class="auth-visual" aria-hidden="true">
+      <div class="visual-content">
+        <p class="eyebrow">Portfolio ready</p>
+        <h1>A premium command center for nutrition and body metrics.</h1>
+        <div class="visual-stats">
+          <span><strong>Goals</strong> Focused</span>
+          <span><strong>Meals</strong> Planned</span>
+          <span><strong>Progress</strong> Clear</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

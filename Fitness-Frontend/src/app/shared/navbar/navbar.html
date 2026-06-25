@@ -1,14 +1,18 @@
-<nav class="navbar navbar-dark bg-primary px-4">
+<nav class="top-nav">
+  <div>
+    <p class="nav-kicker">Fitness workspace</p>
+    <h1>Welcome, {{ userName }}</h1>
+  </div>
 
-  <h4 class="text-white">
-    Fitness Dashboard
-  </h4>
+  <div class="nav-actions">
+    <app-theme-toggle></app-theme-toggle>
 
-  <button
-    class="btn btn-light"
-    type="button"
-    (click)="logout()">
-    Logout
-  </button>
-
+    <button
+      class="btn-soft"
+      type="button"
+      (click)="logout()">
+      <i class="bi bi-box-arrow-right"></i>
+      Logout
+    </button>
+  </div>
 </nav>

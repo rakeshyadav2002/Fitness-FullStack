@@ -1,0 +1,43 @@
+@import '../login/login.css';
+
+.register-shell {
+  grid-template-columns: minmax(380px, 0.78fr) minmax(0, 1.02fr);
+}
+
+.strength-meter {
+  background: var(--surface-strong);
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.strength-meter span {
+  background: var(--muted);
+  display: block;
+  height: 100%;
+  transition: width 220ms ease, background-color 220ms ease;
+}
+
+.strength-meter.weak span {
+  background: var(--danger);
+}
+
+.strength-meter.good span {
+  background: var(--warning);
+}
+
+.strength-meter.strong span {
+  background: var(--primary);
+}
+
+.strength-label {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+@media (max-width: 960px) {
+  .register-shell {
+    grid-template-columns: 1fr;
+  }
+}

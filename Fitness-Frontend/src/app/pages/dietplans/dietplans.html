@@ -1,76 +1,72 @@
-<div class="container mt-4">
-
-  <div class="d-flex align-items-center justify-content-between mb-3">
-    <h3 class="mb-0">Diet Plans</h3>
+<section class="page-shell diet-page">
+  <div class="page-header">
+    <div>
+      <p class="eyebrow">Goal-based nutrition</p>
+      <h2 class="page-title">Diet Plans</h2>
+      <p class="page-subtitle">
+        Compare meal structures for weight loss, muscle gain, and maintenance goals.
+      </p>
+    </div>
 
     <button
       type="button"
-      class="btn btn-outline-primary btn-sm"
+      class="btn-soft"
+      [disabled]="isLoading"
       (click)="loadDietPlans()">
+      <app-loading-spinner *ngIf="isLoading" label="Refreshing plans"></app-loading-spinner>
+      <i *ngIf="!isLoading" class="bi bi-arrow-clockwise"></i>
       Refresh
     </button>
   </div>
 
-  <div
-    *ngIf="isLoading"
-    class="alert alert-info">
-    Loading diet plans...
-  </div>
-
-  <div
-    *ngIf="errorMessage"
-    class="alert alert-danger">
+  <div *ngIf="errorMessage" class="status-message status-error">
     {{ errorMessage }}
   </div>
 
-  <div class="row g-3">
-
-    <div
-      class="col-md-4"
-      *ngFor="let plan of dietPlans">
-
-      <div class="card h-100 shadow-sm diet-plan-card">
-
-        <div class="card-body">
-
-          <h4 class="card-title">
-            {{ plan.planName }}
-          </h4>
-
-          <p class="text-muted mb-2">
-            {{ plan.goalType }}
-          </p>
-
-          <div class="calorie-badge mb-3">
-            {{ plan.caloriesPerDay }} Calories/day
-          </div>
-
-          <div class="meal-section">
-            <strong>Breakfast</strong>
-            <p>{{ plan.breakfast }}</p>
-          </div>
-
-          <div class="meal-section">
-            <strong>Lunch</strong>
-            <p>{{ plan.lunch }}</p>
-          </div>
-
-          <div class="meal-section">
-            <strong>Dinner</strong>
-            <p>{{ plan.dinner }}</p>
-          </div>
-
-          <div class="meal-section">
-            <strong>Snacks</strong>
-            <p>{{ plan.snacks }}</p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
+ <div *ngIf="isLoading" class="loading-panel app-card">
+    <app-loading-spinner label="Loading diet plans"></app-loading-spinner>
+    <span>Loading diet plans...</span>
   </div>
 
-</div>
+  <div class="diet-grid">
+    <article
+      class="diet-plan-card app-card"
+      *ngFor="let plan of dietPlans">
+
+      <div class="plan-top">
+        <div class="plan-icon">
+          <i class="bi bi-clipboard2-pulse"></i>
+        </div>
+
+        <span class="calorie-badge">
+          {{ plan.caloriesPerDay }} kcal/day
+        </span>
+      </div>
+
+      <p class="eyebrow">{{ plan.goalType }}</p>
+      <h3>{{ plan.planName }}</h3>
+
+      <div class="meal-list">
+        <div class="meal-section">
+          <span><i class="bi bi-sunrise"></i> Breakfast</span>
+          <p>{{ plan.breakfast }}</p>
+        </div>
+
+        <div class="meal-section">
+          <span><i class="bi bi-brightness-high"></i> Lunch</span>
+          <p>{{ plan.lunch }}</p>
+        </div>
+
+        <div class="meal-section">
+          <span><i class="bi bi-moon"></i> Dinner</span>
+          <p>{{ plan.dinner }}</p>
+        </div>
+
+        <div class="meal-section">
+          <span><i class="bi bi-cup-straw"></i> Snacks</span>
+          <p>{{ plan.snacks }}</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>

@@ -1,81 +1,89 @@
-<div class="d-flex">
-
+<div class="dashboard-layout">
   <app-sidebar></app-sidebar>
 
-  <div class="flex-grow-1">
-
+  <main class="dashboard-main">
     <app-navbar></app-navbar>
 
-    <div
-      *ngIf="isDashboardHome"
-      class="container mt-4">
+    <section *ngIf="isDashboardHome; else childPage" class="dashboard-home page-shell">
+      <div class="hero-band">
+        <div class="hero-copy">
+          <p class="eyebrow">Today&apos;s plan</p>
+          <h2>Stay consistent, {{ userName }}.</h2>
+          <p>
+            A focused dashboard for body metrics, meal tracking, profile progress,
+            and practical diet planning.
+          </p>
 
-      <h2>
-        Welcome to Fitness Dashboard
-      </h2>
+          <div class="hero-actions">
+            <a class="btn-fitness" routerLink="/dashboard/calories">
+              <i class="bi bi-plus-circle"></i>
+              Log calories
+            </a>
 
-      <div class="row mt-4">
-
-        <div class="col-md-4">
-          <a
-            class="card shadow p-4 text-decoration-none text-dark"
-            routerLink="/dashboard/bmi">
-
-            <i class="bi bi-heart-pulse fs-1 text-primary"></i>
-
-            <h4 class="mt-3">
-              BMI
-            </h4>
-
-            <p>
-              Check your body mass index
-            </p>
-
-          </a>
+            <a class="btn-soft" routerLink="/dashboard/bmi">
+              <i class="bi bi-calculator"></i>
+              Calculate BMI
+            </a>
+          </div>
         </div>
 
-        <div class="col-md-4">
-          <a
-            class="card shadow p-4 text-decoration-none text-dark"
-            routerLink="/dashboard/calories">
-
-            <i class="bi bi-fire fs-1 text-danger"></i>
-
-            <h4 class="mt-3">
-              Calories
-            </h4>
-
-            <p>
-              Track daily calories
-            </p>
-
-          </a>
+        <div class="hero-panel">
+          <span class="metric-chip">
+            <i class="bi bi-graph-up-arrow"></i>
+            Progress dashboard
+          </span>
+          <strong>4</strong>
+          <small>Core fitness tools connected to your account</small>
         </div>
-
-        <div class="col-md-4">
-          <a
-            class="card shadow p-4 text-decoration-none text-dark"
-            routerLink="/dashboard/profile">
-
-            <i class="bi bi-person-circle fs-1 text-success"></i>
-
-            <h4 class="mt-3">
-              Profile
-            </h4>
-
-            <p>
-              Manage your profile
-            </p>
-
-          </a>
-        </div>
-
       </div>
 
-    </div>
+      <div class="dashboard-stats">
+        <div class="stat-card app-card">
+          <i class="bi bi-calendar2-check"></i>
+          <span>Weekly focus</span>
+          <strong>Build rhythm</strong>
+        </div>
 
-    <router-outlet></router-outlet>
+        <div class="stat-card app-card">
+          <i class="bi bi-droplet-half"></i>
+          <span>Hydration cue</span>
+          <strong>Keep it steady</strong>
+        </div>
 
-  </div>
+        <div class="stat-card app-card">
+          <i class="bi bi-moon-stars"></i>
+          <span>Recovery</span>
+          <strong>Sleep matters</strong>
+        </div>
+      </div>
 
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Your tools</p>
+          <h3>Fitness command center</h3>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        <a
+          *ngFor="let card of cards"
+          class="feature-card app-card"
+          [ngClass]="card.tone"
+          [routerLink]="card.link">
+          <div class="feature-icon">
+            <i class="bi" [ngClass]="card.icon"></i>
+          </div>
+
+          <span>{{ card.metric }}</span>
+          <h4>{{ card.title }}</h4>
+          <p>{{ card.description }}</p>
+          <i class="bi bi-arrow-right-short arrow"></i>
+        </a>
+      </div>
+    </section>
+
+    <ng-template #childPage>
+      <router-outlet></router-outlet>
+    </ng-template>
+  </main>
 </div>

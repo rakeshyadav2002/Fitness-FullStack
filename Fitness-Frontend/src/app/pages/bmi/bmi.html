@@ -1,47 +1,93 @@
-<div class="container mt-5">
-
-  <div class="card shadow p-4">
-
-    <h2 class="text-center mb-4">
-      BMI Calculator
-    </h2>
-
-    <input
-      type="number"
-      class="form-control mb-3"
-      placeholder="Enter Height in meters"
-      [(ngModel)]="height">
-
-    <input
-      type="number"
-      class="form-control mb-3"
-      placeholder="Enter Weight in KG"
-      [(ngModel)]="weight">
-
-    <button
-      class="btn btn-primary w-100"
-      (click)="calculateBMI()">
-
-      Calculate BMI
-
-    </button>
-
-    <div
-      *ngIf="bmi > 0"
-      class="alert alert-success mt-4">
-
-      <h4>
-        BMI:
-        {{ bmi }}
-      </h4>
-
-      <h5>
-        Category:
-        {{ category }}
-      </h5>
-
+<section class="page-shell bmi-page">
+  <div class="page-header">
+    <div>
+      <p class="eyebrow">Body metrics</p>
+      <h2 class="page-title">BMI Calculator</h2>
+      <p class="page-subtitle">
+        Enter height and weight to see your BMI, category, and healthy target range.
+      </p>
     </div>
 
+    <span class="metric-chip">
+      <i class="bi bi-rulers"></i>
+      {{ heightInFeet }}
+    </span>
   </div>
 
-</div>
+  <div class="bmi-grid">
+    <form class="bmi-form app-card" (ngSubmit)="calculateBMI()">
+      <div>
+        <label class="form-label" for="heightCm">Height in centimeters</label>
+        <div class="input-icon-wrap">
+          <i class="bi bi-arrows-vertical"></i>
+          <input
+            id="heightCm"
+            type="number"
+            name="heightCm"
+            class="form-control"
+            placeholder="170"
+            min="1"
+            required
+            [(ngModel)]="heightCm"
+            (input)="convertToFeet()">
+        </div>
+      </div>
+
+      <div>
+        <label class="form-label" for="weight">Weight in kilograms</label>
+        <div class="input-icon-wrap">
+          <i class="bi bi-speedometer"></i>
+          <input
+            id="weight"
+            type="number"
+            name="weight"
+            class="form-control"
+            placeholder="70"
+            min="1"
+            required
+            [(ngModel)]="weight">
+        </div>
+      </div>
+
+      <button type="submit" class="btn-fitness w-100">
+        <i class="bi bi-calculator"></i>
+        Calculate BMI
+      </button>
+
+      <div class="quick-facts">
+        <div>
+          <span>Height display</span>
+          <strong>{{ heightInFeet }}</strong>
+        </div>
+        <div>
+          <span>Healthy weight range</span>
+          <strong>{{ healthyRange }}</strong>
+        </div>
+      </div>
+    </form>
+
+    <div class="result-panel app-card" [class.has-result]="bmi > 0" [ngClass]="categoryClass">
+      <div class="result-ring">
+        <span>{{ bmi > 0 ? bmi : '--' }}</span>
+        <small>BMI</small>
+      </div>
+
+      <div>
+        <p class="eyebrow">Result</p>
+        <h3>{{ category || 'Ready when you are' }}</h3>
+        <p>
+          {{ bmi > 0
+            ? 'Use this as a directional wellness signal alongside strength, energy, and recovery.'
+            : 'Add your current height and weight to generate a personalized result.' }}
+        </p>
+      </div>
+
+      <div class="category-scale" aria-hidden="true">
+        <span>Under</span>
+        <span>Normal</span>
+        <span>Over</span>
+        <span>Obese</span>
+      </div>
+    </div>
+  </div>
+</section>

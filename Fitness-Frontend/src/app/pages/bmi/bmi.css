@@ -1,13 +1,129 @@
-.card {
-
-  max-width: 500px;
-
-  margin: auto;
-
-  border-radius: 15px;
+.page-header {
+  align-items: end;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 22px;
 }
 
-button {
+.bmi-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(320px, 0.78fr) minmax(0, 1fr);
+}
 
-  font-size: 18px;
+.bmi-form,
+.result-panel {
+  padding: 24px;
+}
+
+.bmi-form {
+  display: grid;
+  gap: 18px;
+}
+
+.quick-facts {
+  display: grid;
+  gap: 12px;
+}
+
+.quick-facts div {
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+}
+
+.quick-facts span,
+.result-panel p {
+  color: var(--muted);
+}
+
+.quick-facts strong {
+  display: block;
+  margin-top: 4px;
+}
+
+.result-panel {
+  align-items: center;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 210px minmax(0, 1fr);
+}
+
+.result-ring {
+  align-items: center;
+  aspect-ratio: 1;
+  background: conic-gradient(var(--primary) 72%, var(--surface-strong) 0);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.result-ring span {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.result-ring small {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.result-panel h3 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 0 0 8px;
+}
+
+.category-scale {
+  display: grid;
+  gap: 8px;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.category-scale span {
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 10px;
+  text-align: center;
+}
+
+.underweight .category-scale span:nth-child(1),
+.normal .category-scale span:nth-child(2),
+.overweight .category-scale span:nth-child(3),
+.obese .category-scale span:nth-child(4) {
+  background: rgba(19, 163, 109, 0.13);
+  border-color: rgba(19, 163, 109, 0.35);
+  color: var(--primary);
+}
+
+@media (max-width: 900px) {
+  .page-header,
+  .bmi-grid,
+  .result-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .result-ring {
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 560px) {
+  .category-scale {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

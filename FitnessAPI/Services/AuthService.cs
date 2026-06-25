@@ -1,5 +1,4 @@
-﻿using BCrypt.Net;
-using FitnessAPI.Data;
+﻿using FitnessAPI.Data;
 using FitnessAPI.DTOs;
 using FitnessAPI.Helpers;
 using FitnessAPI.Interfaces;
@@ -19,6 +18,7 @@ namespace FitnessAPI.Services
             JwtHelper jwtHelper)
         {
             _context = context;
+
             _jwtHelper = jwtHelper;
         }
 
@@ -26,17 +26,24 @@ namespace FitnessAPI.Services
         {
             try
             {
-                var existingUser = await _context.Users
-                    .FirstOrDefaultAsync(x => x.Email == dto.Email);
+                var existingUser =
+                    await _context.Users
+                    .FirstOrDefaultAsync(x =>
+                        x.Email == dto.Email);
 
                 if (existingUser != null)
                 {
                     return "Email already exists";
                 }
 
+                int newUserId =
+                    await _context.Users.AnyAsync()
+                    ? await _context.Users.MaxAsync(x => x.UserId) + 1
+                    : 1;
+
                 User user = new User()
                 {
-                    UserId = dto.UserId,   // IMPORTANT
+                    UserId = newUserId,
 
                     FullName = dto.FullName,
 
@@ -64,7 +71,8 @@ namespace FitnessAPI.Services
 
         public async Task<string?> LoginAsync(LoginDTO dto)
         {
-            var user = await _context.Users
+            var user =
+                await _context.Users
                 .FirstOrDefaultAsync(x =>
                     x.Email == dto.Email);
 

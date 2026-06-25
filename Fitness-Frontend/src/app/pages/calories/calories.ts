@@ -11,11 +11,16 @@ import {
 import { AuthService } from '../../services/auth';
 import { Router } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { LoadingSpinnerComponent } from '../../shared/loading-spinner/loading-spinner';
 
 @Component({
   selector: 'app-calories',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    LoadingSpinnerComponent
+  ],
   templateUrl: './calories.html',
   styleUrl: './calories.css'
 })
@@ -31,6 +36,17 @@ export class Calories implements OnInit {
   errorMessage = '';
 
   isSaving = false;
+
+  deletingId = 0;
+
+  mealTypes = [
+    'Breakfast',
+    'Lunch',
+    'Dinner',
+    'Snack',
+    'Pre-workout',
+    'Post-workout'
+  ];
 
   private userId = 0;
 
@@ -87,8 +103,7 @@ export class Calories implements OnInit {
           this.isSaving = false;
         },
 
-        error: (err) => {
-          console.log('POST ERROR', err);
+        error: () => {
           this.errorMessage = 'Unable to add calorie record';
           this.isSaving = false;
         }
@@ -104,8 +119,7 @@ export class Calories implements OnInit {
           this.isSaving = false;
         },
 
-        error: (err) => {
-          console.log('GET ERROR', err);
+        error: () => {
           this.errorMessage = 'Unable to load calorie records';
           this.isSaving = false;
         }
@@ -122,6 +136,7 @@ export class Calories implements OnInit {
 
     this.successMessage = '';
     this.errorMessage = '';
+    this.deletingId = calorieId;
 
     this.calorieService.deleteCalorie(calorieId)
       .subscribe({
@@ -132,11 +147,12 @@ export class Calories implements OnInit {
 
           this.calculateTotalCalories();
           this.successMessage = 'Calorie record deleted successfully';
+          this.deletingId = 0;
         },
 
-        error: (err) => {
-          console.log('DELETE ERROR', err);
+        error: () => {
           this.errorMessage = 'Unable to delete calorie record';
+          this.deletingId = 0;
         }
       });
   }

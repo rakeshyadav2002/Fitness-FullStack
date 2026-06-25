@@ -1,43 +1,67 @@
-<div class="container mt-4">
+<section class="page-shell profile-page">
+  <div class="profile-hero app-card">
+    <div class="avatar">
+      {{ user.name.charAt(0) }}
+    </div>
 
-  <div class="card shadow p-4">
+    <div class="profile-copy">
+      <p class="eyebrow">Member profile</p>
+      <h2>{{ user.name }}</h2>
+      <p>{{ user.email }}</p>
+    </div>
 
-    <h2 class="mb-4">My Profile</h2>
-
-    <table class="table table-bordered">
-
-      <tr>
-        <th>Name</th>
-        <td>{{ user.name }}</td>
-      </tr>
-
-      <tr>
-        <th>Email</th>
-        <td>{{ user.email }}</td>
-      </tr>
-
-      <tr>
-        <th>Age</th>
-        <td>{{ user.age }}</td>
-      </tr>
-
-      <tr>
-        <th>Gender</th>
-        <td>{{ user.gender }}</td>
-      </tr>
-
-      <tr>
-        <th>Height</th>
-        <td>{{ user.height }} cm</td>
-      </tr>
-
-      <tr>
-        <th>Weight</th>
-        <td>{{ user.weight }} kg</td>
-      </tr>
-
-    </table>
-
+    <span class="metric-chip">
+      <i class="bi bi-trophy"></i>
+      Active member
+    </span>
   </div>
 
-</div>
+  <div class="profile-grid">
+    <article class="app-card profile-card">
+      <div class="card-heading">
+        <i class="bi bi-person-vcard"></i>
+        <div>
+          <h3>Personal details</h3>
+          <p>Your account and fitness baseline.</p>
+        </div>
+      </div>
+
+      <dl class="detail-list">
+        <div>
+          <dt>Name</dt>
+          <dd>{{ user.name }}</dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd>{{ user.email }}</dd>
+        </div>
+        <div>
+          <dt>Gender</dt>
+          <dd>{{ user.gender }}</dd>
+        </div>
+        <div>
+          <dt>Fitness goal</dt>
+          <dd>{{ user.goal }}</dd>
+        </div>
+      </dl>
+    </article>
+
+    <article class="app-card profile-card">
+      <div class="card-heading">
+        <i class="bi bi-graph-up"></i>
+        <div>
+          <h3>Body metrics</h3>
+          <p>Quick reference for your fitness tools.</p>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="profile-stat" *ngFor="let stat of profileStats">
+          <i class="bi" [ngClass]="stat.icon"></i>
+          <span>{{ stat.label }}</span>
+          <strong>{{ stat.value }}</strong>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
