@@ -1,4 +1,4 @@
 export const environment =
 {
-  apiUrl: 'https://localhost:44337/api'
+ apiUrl: 'http://fitnessfullstack.runasp.net/api'
 };
