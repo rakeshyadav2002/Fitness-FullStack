@@ -12,13 +12,13 @@ A full-stack Fitness Management web application built using Angular, ASP.NET Cor
 
 Frontend Website:
 
-http://fitnessfullstackui.runasp.net/
+https://fitnessfullstackui.runasp.net/
 
 
 
 Backend Swagger API:
 
-http://fitnessfullstack.runasp.net/swagger/index.html
+https://fitnessfullstack.runasp.net/swagger/index.html
 
 
 
